@@ -1,10 +1,12 @@
-import { Channels } from 'main/preload';
+import { IpcExampleChannel, SendNameChannel } from 'main/preload';
+
+type GenericChannel = IpcExampleChannel | SendNameChannel;
 
 declare global {
   interface Window {
     electron: {
       ipcRenderer: {
-        sendMessage(channel: Channels, args: unknown[]): void;
+        sendMessage(channel: GenericChannel, args: unknown[]): void;
         on(
           channel: string,
           func: (...args: unknown[]) => void
