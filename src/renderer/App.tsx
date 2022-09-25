@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import icon from '../../assets/icon.svg';
 import './App.css';
@@ -7,6 +7,7 @@ const Hello = () => {
   const [name, setName] = useState('Frank');
 
   const handleClick = () => {
+    // eslint-disable-next-line no-console
     console.log('clicked button. Within App.tsx, name is', name);
     window.electron.ipcRenderer.sendMessage('send-name', [name]);
   };
